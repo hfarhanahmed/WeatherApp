@@ -1,5 +1,6 @@
 package com.farhan.data
 
+import com.farhan.data.weather.local.FavoriteRoomEntity
 import com.farhan.data.weather.remote.WeatherResponse
 import com.farhan.data.weather.local.WeatherRoomEntity
 import com.farhan.domain.entities.WeatherEntity
@@ -21,5 +22,7 @@ class MockDataHelper {
         fun getWeatherEntity(dateTime: DateTime = DateTime.now()) = WeatherEntity(1234, "London", 20.5f, "Sunny", 60.0, WindDirection.NorthEast, 55.0, 50.0, "iconUrl", dateTime)
 
         fun getWeatherRoomEntity(dateTime: DateTime = DateTime.now()) = WeatherRoomEntity(1234, "London", 20.5f, "Sunny", 60.0, WindDirection.NorthEast.toString(), 55.0,50.5, "iconUrl", dateTime.millis)
+
+        fun getFavoriteRoomEntity() = FavoriteRoomEntity(1234, "London")
     }
 }

@@ -11,7 +11,7 @@ interface FavoriteDao {
     fun insert(favorite: FavoriteRoomEntity): Completable
 
     @Query("SELECT * from Favorite where city = :city ")
-    fun getFavorite(city: String): Single<WeatherRoomEntity>
+    fun getFavorite(city: String): Single<FavoriteRoomEntity>
 
     @Update
     fun update(favorite: FavoriteRoomEntity): Completable

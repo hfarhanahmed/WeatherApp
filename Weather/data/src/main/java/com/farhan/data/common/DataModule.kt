@@ -2,6 +2,7 @@ package com.farhan.data.common
 
 import android.content.Context
 import androidx.room.Room
+import com.farhan.data.weather.local.FavoriteDao
 import com.farhan.data.weather.local.WeatherDao
 import com.farhan.data.weather.local.WeatherDatabase
 import com.farhan.data.weather.remote.WeatherService
@@ -23,6 +24,10 @@ class DataModule {
     @Provides
     @PerApplication
     fun provideWeatherDao(weatherDatabase: WeatherDatabase): WeatherDao = weatherDatabase.weatherDao()
+
+    @Provides
+    @PerApplication
+    fun provideFavoriteDao(weatherDatabase: WeatherDatabase): FavoriteDao = weatherDatabase.favoriteDao()
 
     @PerApplication
     @Provides

@@ -48,7 +48,7 @@ class WeatherViewModel @Inject constructor(
     fun loadWeatherByCity(cityName: String) {
         getWeatherByCityUseCase(cityName).addToLoadingState()
             .subscribeWeatherResult({
-                it.isCity = true;
+                it.isCity = true
                 _screenState.value = ScreenState.success(it) }, {
             when (it) {
                 is WError.Offline -> _screenState.value = ScreenState.noInternet()

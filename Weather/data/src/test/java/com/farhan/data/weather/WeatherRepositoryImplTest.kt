@@ -3,6 +3,7 @@ package com.farhan.data.weather
 import androidx.room.EmptyResultSetException
 import com.farhan.data.common.ErrorMapper
 import com.farhan.data.utils.MockDataHelper
+import com.farhan.data.weather.local.FavoriteDao
 import com.farhan.data.weather.local.WeatherDao
 import com.farhan.data.weather.remote.WeatherService
 import com.farhan.domain.common.WError
@@ -25,6 +26,7 @@ class WeatherRepositoryImplTest {
 
     private lateinit var weatherRepository: WeatherRepositoryImpl
     private val weatherDao: WeatherDao = mock()
+    private val favoriteDao: FavoriteDao = mock()
     private val weatherService: WeatherService = mock()
     private val weatherEntityMapper: WeatherEntityMapper = WeatherEntityMapper()
     private val errorMapper: ErrorMapper = ErrorMapper()
@@ -35,7 +37,7 @@ class WeatherRepositoryImplTest {
         whenever(weatherDao.getWeatherByCoords(anyDouble(), anyDouble())).thenReturn(Single.just(MockDataHelper.getWeatherRoomEntity()))
         whenever(weatherService.getWeatherByCoords(anyDouble(), anyDouble(), anyString())).thenReturn(Single.just(MockDataHelper.getWeatherResponse()))
 
-        weatherRepository = WeatherRepositoryImpl(weatherDao, weatherService, weatherEntityMapper, errorMapper)
+        weatherRepository = WeatherRepositoryImpl(weatherDao, favoriteDao, weatherService, weatherEntityMapper, errorMapper)
     }
 
     @After

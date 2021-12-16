@@ -80,7 +80,12 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding, WeatherViewModel>()
             .subscribe { granted ->
                 if (granted) {
                     fusedLocationClient.lastLocation.addOnSuccessListener { location ->
-                        viewModel.loadWeather(arrayOf(location.latitude , location.longitude))
+                        if (location == null ){
+                            emptyLayout.visible()
+                            noWifiLayout.gone()
+                            weatherCardView.gone()
+                        }else
+                            viewModel.loadWeather(arrayOf(location.latitude , location.longitude))
                     }
                 } else {
                     emptyLayout.visible()
