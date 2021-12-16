@@ -1,0 +1,23 @@
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-kapt'
+
+dependencies {
+    implementation Dependencies.kotlin
+    implementation Dependencies.rxjava
+    implementation Dependencies.joda
+    implementation Dependencies.javaxAnnotation
+    implementation Dependencies.javaxInject
+
+    implementation Dependencies.dagger
+    kapt Dependencies.dagger_compiler
+
+    testImplementation Dependencies.junit
+    testImplementation Dependencies.mockito_inline
+    testImplementation Dependencies.mockito_kotlin
+    testImplementation Dependencies.kotlin_test_runtime
+    testImplementation Dependencies.kotlin_test_reflect
+    testImplementation Dependencies.kotlin_test_junit
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"
